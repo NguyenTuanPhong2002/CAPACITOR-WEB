@@ -1,6 +1,104 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'ABeeZee', sans-serif;
     background-color: #f0f0f0;
     color: #333;
     /* Text color */
+}
+
+/* Assuming this is part of your existing CSS file */
+
+.bg-image {
+    width: 100%;
+    /* Adjust the width as needed */
+    height: 900px;
+    /* Adjust the height as needed */
+    background-image: url('Home image/BackGround.jpg');
+    /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background-size: cover;
+    /* Adjusts the image size to cover the entire element */
+    background-position: center;
+    /* Centers the background image */
+}
+
+/* Styling header and navigation */
+header {
+    background-color: #FFFFFF;
+    color: black;
+    padding: 10px 0;
+}
+
+.menu {
+    text-align: center;
+}
+
+.logo {
+    text-align: left;
+    color: #47BBE7;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 30.3px;
+}
+
+.menu ul {
+    list-style: none;
+    text-align: right;
+}
+
+.menu ul li {
+    display: inline;
+    margin: 10 10px;
+}
+
+.menu ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20.7px;
+}
+
+.menu ul li a:hover {
+    color: #2adfb7;
+    /* Change color on hover */
+}
+
+.menu li {
+    border-left: 2px solid #333;
+    padding-left: 10px;
+
+}
+
+.login {
+    background-color: #47BBE7;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+/* title */
+.title {
+    color: #FFFFFF;
+    width: 450px;
+    font-size: 35px;
+    font-family: 'Garet';
+    margin: 250px 80px 10px 80px;
+}
+
+/*buttion*/
+.bt-moreDetails {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #47BBE7;
+    color: #FFFFFF;
+    font-size: 25px;
+    border-radius: 40px;
+    padding: 10px 20px 10px 20px;
+    margin: 100px 0px 0px 100px;
+}
+
+.bt-next {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #47BBE7;
+    color: #FFFFFF;
+    font-size: 50px;
+    border-radius: 90%;
+    padding: 30px 40px;
+    margin: 100px 0px 0px 1400px;
 }
