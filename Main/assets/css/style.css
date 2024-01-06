@@ -1,0 +1,251 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#main {
+}
+
+#header {
+    height: 64px;
+    width: 100%;
+    background-color: rgb(32, 37, 43);
+}
+
+#nav {
+}
+
+#nav li {
+    display: inline-block;
+}
+
+#nav li a {
+    text-decoration: none;
+    color: white;
+    line-height: 64px;
+    padding: 0 30px 0;
+    font-size: 30px;
+    padding-right: 1020px;
+}
+
+#nav li b {
+    text-decoration: none;
+    color: white;
+    line-height: 46px;
+    padding: 0 20px;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+#nav li c {
+    color: rgb(176, 176, 176);
+    font-weight: bolder;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+#container {
+    height: 100%;
+    background-color: rgb(23, 25, 27);
+}
+
+/* #container .content{
+    float: left;
+} */
+
+#nav li d {
+    color: rgb(176, 176, 176);
+    line-height: 40px;
+    padding: 30px 0 40px;
+    font-size: 20px;
+    writing-mode: vertical-lr;
+    display: inline-block;
+}
+
+#nav li e {
+    height: 50px;
+    color: rgb(176, 176, 176);
+    line-height: 50px;
+    padding: 5px 10px;
+    font-size: 20px;
+    display: inline-block;
+    font-weight: bolder;
+}
+
+#nav li f {
+    height: 50px;
+    color: rgb(215, 215, 215);
+    line-height: 50px;
+    padding: 5px 50px;
+    padding-top: 3px;
+    font-size: 20px;
+    display: inline-block;
+}
+
+#nav li g {
+    height: 50px;
+    color: rgb(176, 176, 176);
+    line-height: 50px;
+    padding: 5px 10px;
+    padding-top: 1900px;
+    font-size: 20px;
+    display: inline-block;
+    font-weight: bolder;
+}
+
+#container .content .title .title-item {
+    height: 220px;
+}
+
+#container .content .title .title-item .title-img {
+    width: 1140px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+#container .content .title .title-item .title-inf {
+    padding-left: 600px;
+    padding-bottom: 20px;
+}
+
+#container .content .title .title-item .title-inf .title-name {
+    float: left;
+    font-weight: bolder;
+    font-size: 30px;
+    color: darkgreen;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#container .content .title .title-item .title-inf .title-input {
+    float: left;
+    padding-left: 10px;
+    font-size: 30px;
+    color: darkgreen;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#container .content .information {
+    padding-top: 20px;
+    padding-bottom: 450px;
+}
+
+#container .content .information .contactor {
+    width: 600px;
+    height: 400px;
+    float: left;
+    padding-right: 20px;
+}
+
+#container .content .information .contactor .number-contactor {
+    float: left;
+    padding-left: 90px;
+    color: blue;
+    font-size: 25px;
+}
+
+#container .content .information .contactor .color1 {
+    clear: both;
+    float: left;
+    padding-left: 73px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 50px;
+}
+#container .content .information .contactor .color2 {
+    float: left;
+    padding-left: 53px;
+    padding-top: 20px;
+    font-size: 50px;
+}
+#container .content .information .contactor .color3 {
+    float: left;
+    padding-left: 53px;
+    padding-top: 20px;
+    font-size: 50px;
+}
+#container .content .information .contactor .color4 {
+    float: left;
+    padding-left: 53px;
+    padding-top: 20px;
+    font-size: 50px;
+}
+#container .content .information .contactor .color5 {
+    clear: both;
+    float: left;
+    padding-left: 73px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-size: 50px;
+}
+#container .content .information .contactor .color6 {
+    float: left;
+    padding-left: 53px;
+    padding-top: 20px;
+    font-size: 50px;
+}
+#container .content .information .contactor .color7 {
+    float: left;
+    padding-left: 53px;
+    padding-top: 20px;
+    font-size: 50px;
+}
+#container .content .information .contactor .color8 {
+    float: left;
+    padding-left: 53px;
+    padding-top: 20px;
+    font-size: 50px;
+}
+
+#container .content .information .database {
+    width: 500px;
+    height: 400px;
+    float: left;
+    color: rgb(101, 54, 19);
+}
+
+#container .content .information .database .chu-thich {
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#container .content .monitor {
+    background-color: rgb(242, 240, 240);
+}
+
+#container .content .monitor .ghi-chu-2 {
+    padding: 10px 10px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container .content .monitor .contain-C {
+    padding: 10px 30px;
+    background-color: white;
+}
+
+#footer {
+    background-color: white;
+}
+
+.operatingParameters {
+    padding: 0 20px;
+}
+
+.ti-ruler {
+    font-size: 80px;
+}
+
+.notes__table p {
+    margin: 5px 0;
+    font-weight: 700;
+}
+
+#cosFi__chart--area {
+}

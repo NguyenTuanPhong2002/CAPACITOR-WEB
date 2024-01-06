@@ -12844,3 +12844,16 @@ body.sidebar-toggled footer.sticky-footer {
 .color-bar {
     font-size: 50px;
 }
+
+.bg-image {
+    width: 100%;
+    /* Adjust the width as needed */
+    height: 950px;
+    /* Adjust the height as needed */
+    background-image: url('image/z5032392176598_982e670747ae1ddd27aaf66ffb8d3c54.jpg');
+    /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background-size: cover;
+    /* Adjusts the image size to cover the entire element */
+    background-position: center;
+    /* Centers the background image */
+}

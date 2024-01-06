@@ -36,18 +36,18 @@ $(document).ready(function () {
                 data: [],
             },
         ],
-    } 
+    }
 
     var cosFiLineChart = new Chart(
         document.getElementById('canvasCosFi').getContext('2d')
     )
 
     var reactivePowerLineChart = new Chart(
-      document.getElementById('canvasReactivePower').getContext('2d')
+        document.getElementById('canvasReactivePower').getContext('2d')
     )
 
     var activePowerLineChart = new Chart(
-      document.getElementById('canvasActivePower').getContext('2d')
+        document.getElementById('canvasActivePower').getContext('2d')
     )
 
     const firebaseConfig = {
@@ -62,7 +62,7 @@ $(document).ready(function () {
     }
 
     firebase.initializeApp(firebaseConfig);
-    var dbRef = firebase.database().ref('euphoria')
+    var dbRef = firebase.database().ref('test')
     var postListRef = dbRef.orderByChild('TIME').limitToLast(1)
     var lastest_time
     var cosFis_AM = []
@@ -76,7 +76,7 @@ $(document).ready(function () {
     var dataTable_AM = '';
     var dataTable_PM = '';
     postListRef.on('value', function (snapshot) {
-        
+
         snapshot.forEach(function (keysSnapshot) {
             const voltage = keysSnapshot
                 .child('Three-phase Equivalent Voltage')
@@ -141,7 +141,7 @@ $(document).ready(function () {
             cosFis_PM = []
             dataTable_AM = ''
             dataTable_PM = ''
-            
+
             snapshot.forEach(function (keysSnapshot) {
                 // Update data table
                 const voltage = keysSnapshot
@@ -376,10 +376,10 @@ $(document).ready(function () {
     }
 
     $('#datepicker').datepicker({
-        dateFormat: 'y/mm/dd',
+        dateFormat: 'yy/mm/dd',
     })
 
-    $('#datepicker').on('change', function () {
+    $('#datepicker').on('mouseover', function () {
         times_AM = []
         times_PM = []
         cosFis_AM = []
@@ -393,6 +393,7 @@ $(document).ready(function () {
         document.getElementById('filterTimeActivePower').value = "AM"
         document.getElementById('filterTimeDataTable').value = "AM"
         var date = $('#datepicker').val()
+        console.log(date);
         var filterDataList = dbRef
             .orderByChild('TIME')
             .startAt(`${date}, 00:00:00`)
@@ -420,8 +421,15 @@ $(document).ready(function () {
 
                 time_split = splitDateTime(time)
 
+                console.log(time);
+                console.log(cosFi);
+
+                console.log(checkTimeAmOrPm(time_split));
+
                 if (checkTimeAmOrPm(time_split) == 'AM') {
-                    if (cleanTime(time_split)) {
+                    console.log(!cleanTime(time_split));
+                    //if (!cleanTime(time_split)) {
+                    if (true) {
                         cosFis_AM.push(cosFi)
                         reactivePowers_AM.push(reactivePower)
                         activePowers_AM.push(activePower)
@@ -452,7 +460,8 @@ $(document).ready(function () {
                             '</td></tr>'
                     }
                 } else {
-                    if (cleanTime(time_split)) {
+                    // if (cleanTime(time_split)) {
+                    if (true) {
                         cosFis_PM.push(cosFi)
                         reactivePowers_PM.push(reactivePower)
                         activePowers_PM.push(activePower)
@@ -562,8 +571,8 @@ $(document).ready(function () {
     function cleanTime(time) {
         var minute = time.slice(3, 5)
         var second = time.slice(6, 8)
-//        return parseInt(minute) % 10 == 0 ? true : false
-        if ((parseInt(minute) % 10 == 0) && (1)){
+        //        return parseInt(minute) % 10 == 0 ? true : false
+        if ((parseInt(minute) % 10 == 0) && (1)) {
             return true
         }
         else return false
