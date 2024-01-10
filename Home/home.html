@@ -31,12 +31,23 @@
         </header>
 
 
-        <div class="title">Welcome to HALO app, where we can monitor data....</div>
+        <div class="title">Welcome to HALO app, where we can monitor electrical data in realtime</div>
         <div>
-            <button class="bt-moreDetails">MORE DETAILS <i class="fas fa-chevron-circle-right"></i></button>
-            <button class="bt-next"><i class="fas fa-caret-right"></i></button>
+            <button class="bt-moreDetails" onclick="goToPage2()">MORE DETAILS <i
+                    class="fas fa-chevron-circle-right"></i></button>
+            <button class="bt-next" onclick="goToPage3()"><i class="fas fa-caret-right"></i></button>
         </div>
     </div>
+
+    <script>
+        function goToPage2() {
+            window.location.href = "/Main/main.html";
+        }
+
+        function goToPage3() {
+            window.location.href = "/Main copy/main.html";
+        }
+    </script>
 </body>
 
 </html>

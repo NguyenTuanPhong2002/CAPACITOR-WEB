@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="main.css">
+
+    <!-- Bao gồm Firebase -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js"></script> -->
+
+    <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+    <script src="Chart.js"></script>
+    <script src="./firebaseA.js"></script>
+
+    <title>HALO WEB MONITER</title>
+</head>
+
+<body>
+    <div class="bg-image">
+        <div class="left-area">
+            <div class="menu">
+                <button class="icon"><i class="fab fa-elementor"></i></button>
+                <button class="bell"><i class="fas fa-bell"></i></button>
+            </div>
+            <div class="dasboard">
+                <div class="dashboard-title">Halo application</div>
+                <div class="name">
+                    <img src="image/logo.jpg" class="name-logo">
+                    <p>Chu Puh PC</p>
+                </div>
+                <div class="bt-dasboard">
+                    <a href="#" id="tableDashboard"> Dashboard<i class="fas fa-chevron-circle-down"></i></a>
+                </div>
+                <div class="bt-dasboard">
+                    <a href="#" id="DataMonitor">Data Monitoring<i class="fas fa-chevron-circle-down"></i></a>
+                    <div class="handle" id="DataMonitor" style="display: none;">
+                        <a href="#" id="realTimeMonitor">Real-time Monitoring</a>
+                        <a href="#" id="tableMoniterDay">Real-time Monitoring List</a>
+                        <a href="#" id="mapTableMonitoring">Map</a>
+                        <a href="#">Camera</a>
+                        <a href="#">History Data</a>
+                        <a href="#">Average Data</a>
+                    </div>
+                </div>
+                <div class="bt-dasboard"><a href="#">Settings<i class="fas fa-chevron-circle-down"></i></a></div>
+            </div>
+        </div>
+        <div class="right-area">
+            <div class="header">
+                <form>
+                    <label for="textbox">Total (3)</label>
+                    <input class="text" type="text" id="textbox" name="textbox" placeholder="Management">
+                    <!-- <i class="far fa-question-circle"></i> -->
+                </form>
+            </div>
+
+            <div class="notic">
+                <div class="notic-window" style="background-color: #7ED957;">
+                    <i class="fas fa-bell"></i>
+                    <div class="notic-number">0</div>
+                    <div class="notic-title">Notification</div>
+                </div>
+                <div class="notic-window" style="background-color: #47BBE7;">
+                    <i class="fas fa-comments"></i>
+                    <div class="notic-number">0</div>
+                    <div class="notic-title">Message</div>
+                </div>
+                <div class="notic-window" style="background-color: #E32E22;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="notic-number">0</div>
+                    <div class="notic-title">Warning</div>
+                </div>
+            </div>
+
+            <div class="notic-info">New Notification</div>
+
+
+            <div class="row" style="display: none;">
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                        style="font-size: 16px;">
+                                        CAPACITOR ROUTE</div>
+                                    <form action="action_page.php" style="font-size: 15px; margin-top: 5px;">
+                                        <select name="cars">
+                                            <option value="nt">NGUYEN TRAI route</option>
+                                            <option value="ll">LE LOI route</option>
+                                            <option value="thd">TRAN HUNG DAO route</option>
+                                            <option value="nh">NHON HOA route</option>
+                                            <option value="dre">IA DRENG route</option>
+                                            <option value="dro">IA DRONG route</option>
+                                        </select>
+                                        <br><br>
+                                    </form>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                                        style="font-size: 16px;">
+                                        INSTALLATION POSITION</div>
+                                    <form action="action_page.php"
+                                        style="font-size: 15px; margin-top: 10px; margin-left: 20px;">
+                                        <select name="cars">
+                                            <option value="5H">Pillar 5H</option>
+                                            <option value="2B" selected>Pillar 2B</option>
+                                            <option value="9S">Pillar 9S</option>
+                                            <option value="2A">Pillar 2A</option>
+                                        </select>
+                                        <br><br>
+                                    </form>
+
+                                    <button type="button" onclick="dieu_huong()">Select</button>
+                                    <script>
+                                        function dieu_huong() {
+                                            location.assign("index.html");
+                                        }
+                                    </script>
+
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="stationActice" style="display: none;">Station Active (2/2)</div>
+
+
+            <div class="table-main" style="display: none;">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary" style="font-size:18px">Operating
+                                    parameters
+                                </h6>
+                                <div class="dropdown no-arrow">
+                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                        aria-labelledby="dropdownMenuLink">
+                                        <div class="dropdown-header">Dropdown Header:</div>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <table class="table table-bordered border-primary">
+                                    <tbody>
+                                        <tr>
+                                            <td style="font-size: 16px;color: #5a87b5;font-weight: bold;">Voltage</td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868;"><span
+                                                    id="voltage">0.10</span></td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868">V</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 16px;color: #5a87b5;font-weight: bold;">Current</td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868"><span
+                                                    id="current">0.10</span>
+                                            </td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868">A</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 16px;color: #5a87b5;font-weight: bold;">Frequency</td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868"><span
+                                                    id="frequency">50.00</span></td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868">Hz</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 16px;color: #5a87b5;font-weight: bold;">Active Power
+                                            </td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868"><span
+                                                    id="activePower">10.10</span></td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868">kW</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 16px;color: #5a87b5;font-weight: bold;">Reactive Power
+                                            </td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868"><span
+                                                    id="reactivePower">10.20</span></td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868">kVAr</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 16px;color: #5a87b5;font-weight: bold;">Power Factor
+                                            </td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868"><span
+                                                    id="cosFi">0.50</span>
+                                            </td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 16px;color: #5a87b5;font-weight: bold;">Sampling Cycle
+                                            </td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868"></td>
+                                            <td style="text-align:center; font-size: 16px;color: #686868"><span
+                                                    id="time">23/08/28,15:19:11</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                
+                                <h6 class="m-0 font-weight-bold text-primary" style="font-size:18px">
+                                    Capacitor contactor status</h6>
+                                <div class="dropdown no-arrow">
+                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                        aria-labelledby="dropdownMenuLink">
+                                        <div class="dropdown-header">Dropdown Header:</div>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div>
+                                    <p style="font-size: 16px;color: #5a87b5;font-weight: bold;">
+                                        *Contactor control signal from Relay</p>
+                                    <div class="d-flex justify-content-around fw-bold">
+                                        <p class="number-contactor" style="font-size: 16px; font-weight: 700;">
+                                            1
+                                        </p>
+                                        <p class="number-contactor" style="font-size: 16px; font-weight: 700;">
+                                            2
+                                        </p>
+                                        <p class="number-contactor" style="font-size: 16px; font-weight: 700;">
+                                            3
+                                        </p>
+                                        <p class="number-contactor" style="font-size: 16px; font-weight: 700;">
+                                            4
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <p class="color-bar" id="colorID1" style="color: green;">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                        </p>
+                                        <p class="color-bar" id="colorID2" style="color: green;">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                        </p>
+                                        <p class="color-bar" id="colorID3" style="color: green;">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                        </p>
+                                        <p class="color-bar" id="colorID4" style="color: green;">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 15px">
+                                    <p style="font-size: 16px;color: #5a87b5;font-weight: bold;">
+                                        *Realtime status contactor</p>
+                                    <div class="d-flex justify-content-around fw-bold">
+                                        <p class="number-contactor" style="font-size: 16px; font-weight: 700;">
+                                            1
+                                        </p>
+                                        <p class="number-contactor" style="font-size: 16px; font-weight: 700;">
+                                            2
+                                        </p>
+                                        <p class="number-contactor" style="font-size: 16px; font-weight: 700;">
+                                            3
+                                        </p>
+                                        <p class="number-contactor" style="font-size: 16px; font-weight: 700;">
+                                            4
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <p class="color-bar" id="colorID5" style="color: green;">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                        </p>
+                                        <p class="color-bar" id="colorID6" style="color: green;">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                        </p>
+                                        <p class="color-bar" id="colorID7" style="color: green;">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                        </p>
+                                        <p class="color-bar" id="colorID8" style="color: green;">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                        </p>
+                                    </div>
+                                    <div style="margin-top: 15px">
+                                        <div class="container d-flex" style="text-align: center;">
+                                            <p class="red-on" style="color: red; margin-left: 150px; font-size: 16px">
+                                                - Red color symbol: Close
+                                            </p>
+                                            <p class="green-off"
+                                                style="color: green; margin-left: 10px;font-size: 16px">
+                                                - Green color symbol: Open
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-moniter-day" style="display: none; padding-top: 20px;">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="handle__data--filter--area d-flex justify-content-between mb-3">
+                            <div class="button" style="margin-left: 5px">
+                                <label for="datepicker" style="font-size: 18px;">Date: </label>
+                                <input style="font-size: 16px ;margin-right: 10px; width: 100px; height: 35px; border: solid 1px #bfcae9;
+                                                 border-radius: 5px; text-align: center;" type="text" id="datepicker"
+                                    name="datepicker" class="hasDatepicker">
+                            </div>
+                            <div class="exlbutton">
+                                <button class="exlbutton btn btn-success" style="font-size: 16px;">
+                                    Excel file export
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Area Chart -->
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary" style="font-size:18px">Details</h6>
+                                <div>
+                                    <select style="margin-top: 12px;font-size: 16px;margin-right: 10px; width: 230px; height: 35px; border: solid 1px #bfcae9;
+                                                    border-radius: 5px; text-align: center;" id="filterTimeDataTable"
+                                        class="form-select mb-3" name="filterTimeDataTable">
+                                        <option value="AM">
+                                            Morning (00:00 đến 12:00)
+                                        </option>
+                                        <option value="PM">
+                                            Afternoon (12:00 đến 24:00)
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="space" style="padding: 1px"></div>
+                                <table class="table__filter-by-date table table-bordered border-primary"
+                                    style="font-size: 16px" id="table2excel">
+                                    <thead>
+                                        <tr>
+                                            <th>Datetime</th>
+                                            <th>Voltage</th>
+                                            <th>Frequency</th>
+                                            <th>Current</th>
+                                            <th>CosFi</th>
+                                            <th>ActivePower</th>
+                                            <th>ReactivePower</th>
+                                            <th>StatusCap 1</th>
+                                            <th>StatusCap 2</th>
+                                            <th>StatusCap 3</th>
+                                            <th>StatusCap 4</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="table__filter-by-date-tbody"></tbody>
+                                </table>
+                                <div class="notes__table" style="font-size: 16px;">
+                                    <p>
+                                        Note: Symbol of contactor status on table
+                                    </p>
+                                    <p>- 1: Contactor closing</p>
+                                    <p>- 0: Contactor opening</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="map-table-monitoring" style="display: none; padding-top: 20px;">
+                <div class="row">
+                    <!-- Area Chart -->
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary" style="font-size:18px">Power factor chart
+                                </h6>
+                                <select style="margin-top: 12px;font-size: 16px;margin-right: 10px; width: 230px; height: 35px; border: solid 1px #bfcae9;
+                                                    border-radius: 5px; text-align: center;" id="filterTimeCosFi"
+                                    class="form-select mb-3" name="filterTimeCosFi">
+                                    <option value="AM">
+                                        Morning (00:00 đến 12:00)
+                                    </option>
+                                    <option value="PM">
+                                        Afternoon (12:00 đến 24:00)
+                                    </option>
+                                </select>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div id="cosFi__chart--area" class="pb-3">
+                                    <div class="cosFiChart" style="width: 100%">
+                                        <canvas id="canvasCosFi" width="1325" height="480"
+                                            style="width: 1325px; height: 480px;"></canvas>
+                                        <script></script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <!-- Area Chart -->
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary" style="font-size:18px">Reactive Power
+                                    chart
+                                </h6>
+                                <select style="margin-top: 12px;font-size: 16px;margin-right: 10px; width: 230px; height: 35px; border: solid 1px #bfcae9;
+                                                    border-radius: 5px; text-align: center;"
+                                    id="filterTimeReactivePower" class="form-select mb-3"
+                                    name="filterTimeReactivePower">
+                                    <option value="AM">
+                                        Morning (00:00 đến 12:00)
+                                    </option>
+                                    <option value="PM">
+                                        Afternoon (12:00 đến 24:00)
+                                    </option>
+                                </select>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div id="reactivePower__chart--area" class="pt-3 pb-3">
+                                    <div class="reactivePowerChart" style="width: 100%">
+                                        <canvas id="canvasReactivePower" width="1325" height="480"
+                                            style="width: 1325px; height: 480px;"></canvas>
+                                        <script></script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <!-- Area Chart -->
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary" style="font-size:18px">Active Power chart
+                                </h6>
+                                <select style="margin-top: 12px;font-size: 16px;margin-right: 10px; width: 230px; height: 35px; border: solid 1px #bfcae9;
+                                                    border-radius: 5px; text-align: center;" id="filterTimeActivePower"
+                                    class="form-select mb-3" name="filterTimeActivePower">
+                                    <option value="AM">
+                                        Morning (00:00 đến 12:00)
+                                    </option>
+                                    <option value="PM">
+                                        Afternoon (12:00 đến 24:00)
+                                    </option>
+                                </select>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div id="activePower__chart--area" class="pt-3 pb-3">
+                                    <div class="activePowerChart" style="width: 100%">
+                                        <canvas id="canvasActivePower" width="1325" height="480"
+                                            style="width: 1325px; height: 480px;"></canvas>
+                                        <script></script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+        <script src="./jquery.table2excel.min.js"></script>
+        <script>
+            $('.exlbutton').click(function () {
+                $('#table2excel').table2excel({
+                    name: 'Worksheet Name',
+                    filename: 'DataInTime',
+                    fileext: '.xls',
+                })
+            })
+        </script>
+    </div>
+</body>
+
+</html>
