@@ -62,7 +62,7 @@ $(document).ready(function () {
     }
 
     firebase.initializeApp(firebaseConfig);
-    var dbRef = firebase.database().ref('test')
+    var dbRef = firebase.database().ref('thang_12')
     var postListRef = dbRef.orderByChild('TIME').limitToLast(1)
     var lastest_time
     var cosFis_AM = []
